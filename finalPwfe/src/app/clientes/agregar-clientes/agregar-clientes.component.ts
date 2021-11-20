@@ -13,6 +13,7 @@ export class AgregarClientesComponent implements OnInit {
 
   cliente: Cliente = new Cliente();
   clienteId: number = 0;
+  mensaje: String = "";
 
   constructor(private router: Router) { }
 
@@ -34,26 +35,41 @@ export class AgregarClientesComponent implements OnInit {
     }
   }
   saveCliente() {
-    debugger;
-    //Llega id actualizado para guardar
-    this.clienteId =  this.getNewClienteId();
-    this.cliente.clienteId = this.clienteId;
+    if(this.cliente.ruc == undefined){
+      this.mensaje = "--Introduzca un Ruc--";
+    }else {
+      if (this.cliente.nombreApellido == undefined) {
+        this.mensaje = "--Introduzca Nombre Completo--";
+      } else {
+        if (this.cliente.email == undefined) {
+          this.mensaje = "--Introduzca un Email--";
+        } else {
+          debugger;
+          //Llega id actualizado para guardar
+          this.clienteId = this.getNewClienteId();
+          this.cliente.clienteId = this.clienteId;
 
-    const datos =  localStorage.getItem('clientes');
-    if (datos !== null) {
-      const clientes = JSON.parse(datos);
-      clientes.push(this.cliente);
-      localStorage.setItem('clientes', JSON.stringify(clientes));
-      //Actualizar idProd
-      localStorage.setItem('clienteId', JSON.stringify(this.clienteId));
-    } else {
-      const clienteArr = [];
-      clienteArr.push(this.cliente);
-      localStorage.setItem('clientes', JSON.stringify(clienteArr));
-      localStorage.setItem('clienteId', JSON.stringify(1));
+          const datos = localStorage.getItem('clientes');
+          if (datos !== null) {
+            const clientes = JSON.parse(datos);
+            clientes.push(this.cliente);
+            localStorage.setItem('clientes', JSON.stringify(clientes));
+            //Actualizar idProd
+            localStorage.setItem('clienteId', JSON.stringify(this.clienteId));
+          } else {
+            const clienteArr = [];
+            clienteArr.push(this.cliente);
+            localStorage.setItem('clientes', JSON.stringify(clienteArr));
+            localStorage.setItem('clienteId', JSON.stringify(1));
+          }
+          this.router.navigateByUrl('/clientes');
+        }
+      }
     }
-    this.router.navigateByUrl('/clientes');
+  }
 
+  cancelar(){
+    this.router.navigateByUrl('/clientes');
   }
 
 

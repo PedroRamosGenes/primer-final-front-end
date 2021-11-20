@@ -23,6 +23,7 @@ export class DetalleComponent implements OnInit {
   productos: Producto[] = [];
   ventaId: number = 0;
   det: Detalle[] = [];
+  flagAux: boolean = true;
   productoMostrar: Producto = new Producto();
 
   constructor(private route: ActivatedRoute, private router: Router) {
@@ -174,6 +175,7 @@ export class DetalleComponent implements OnInit {
   }
 
   confirmar(){
+    this.flagAux = true;
     const detallesAux =  localStorage.getItem('detallesAux');
     if (detallesAux !== null) {
       this.detallesAux = JSON.parse(detallesAux);
@@ -192,10 +194,21 @@ export class DetalleComponent implements OnInit {
         localStorage.setItem('detalles', JSON.stringify(detalleArr));
       }
 
+      if(this.detallesAux.length==0){
+        debugger;
+        this.flagAux = false;
+
+      }else{
+        //Cerar Aux
+        localStorage.setItem('detallesAux', JSON.stringify(this.det));
+        this.router.navigateByUrl('/reporteResumido');
+      }
+
+    }else{
+      debugger;
+      this.flagAux = false;
     }
-    //Cerar Aux
-    localStorage.setItem('detallesAux', JSON.stringify(this.det));
-    this.router.navigateByUrl('/productos');
+
   }
 
   cancelar(){
@@ -211,7 +224,10 @@ export class DetalleComponent implements OnInit {
       this.ventaId = JSON.parse(dato2);
       localStorage.setItem('ventaId', JSON.stringify(this.ventaId - 1));
     }
-    this.router.navigateByUrl('/productos');
+
+    //Cerar Aux
+    localStorage.setItem('detallesAux', JSON.stringify(this.det));
+    this.router.navigateByUrl('/reporteResumido');
   }
 
 

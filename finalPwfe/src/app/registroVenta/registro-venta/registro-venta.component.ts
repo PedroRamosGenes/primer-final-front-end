@@ -17,6 +17,7 @@ export class RegistroVentaComponent implements OnInit {
   mes: number = 0;
   ano: number = 0;
   clientes: Cliente[] = [];
+  mensaje: String = "";
 
   constructor(private router: Router) { }
 
@@ -50,40 +51,47 @@ export class RegistroVentaComponent implements OnInit {
       "Oct", "Nov", "Dic"];
     this.fecha = curr_date + "-" + months[curr_month] + "-" + curr_year;
     this.dia = curr_date;
-    this.mes = curr_month;
+    this.mes = curr_month+1;
     this.ano = curr_year;
   }
 
   confirmar(){
-    debugger;
-    //Llega id actualizado para guardar
-    this.ventaId =  this.getNewVentaId();
-    this.getFecha();
-    this.venta.ventaId = this.ventaId;
-    this.venta.fecha = this.fecha;
-    this.venta.dia = this.dia;
-    this.venta.mes = this.mes;
-    this.venta.ano = this.ano;
+    if(this.venta.factura == undefined){
+      this.mensaje = "--Introduzca un Numero de Factura--";
+    }else {
+      if (this.venta.cliente == undefined) {
+        this.mensaje = "--Seleccione un Cliente--";
+      } else {
+        debugger;
+        //Llega id actualizado para guardar
+        this.ventaId = this.getNewVentaId();
+        this.getFecha();
+        this.venta.ventaId = this.ventaId;
+        this.venta.fecha = this.fecha;
+        this.venta.dia = this.dia;
+        this.venta.mes = this.mes;
+        this.venta.ano = this.ano;
 
-    const datos =  localStorage.getItem('ventas');
-    if (datos !== null) {
-      const ventas = JSON.parse(datos);
-      ventas.push(this.venta);
-      localStorage.setItem('ventas', JSON.stringify(ventas));
-      //Actualizar idProd
-      localStorage.setItem('ventaId', JSON.stringify(this.ventaId));
-    } else {
-      const ventaArr = [];
-      ventaArr.push(this.venta);
-      localStorage.setItem('ventas', JSON.stringify(ventaArr));
-      localStorage.setItem('ventaId', JSON.stringify(1));
+        const datos = localStorage.getItem('ventas');
+        if (datos !== null) {
+          const ventas = JSON.parse(datos);
+          ventas.push(this.venta);
+          localStorage.setItem('ventas', JSON.stringify(ventas));
+          //Actualizar idProd
+          localStorage.setItem('ventaId', JSON.stringify(this.ventaId));
+        } else {
+          const ventaArr = [];
+          ventaArr.push(this.venta);
+          localStorage.setItem('ventas', JSON.stringify(ventaArr));
+          localStorage.setItem('ventaId', JSON.stringify(1));
+        }
+        this.router.navigate(['/detalle'], {queryParams: {id: this.venta.ventaId}});
+      }
     }
-    this.router.navigate(['/detalle'], {queryParams: {id: this.venta.ventaId}});
-
   }
 
   cancelar(){
-    this.router.navigateByUrl('/productos');
+    this.router.navigateByUrl('/reporteResumido');
   }
 
 

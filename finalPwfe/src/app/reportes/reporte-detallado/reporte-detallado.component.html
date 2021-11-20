@@ -2,9 +2,40 @@
 <div class="card">
   <div class="card-header bg-light text-dark">Lista de Productos</div>
   <div class="card-body">
-    <div *ngIf="detalles.length==0; else existenDatos" class="text-center">
-      <h3>Aun no existen ventas</h3>
-      <button class="btn btn-sm btn-dark mr-2" [routerLink]="['/registroVentas']">Ir a Registro Ventas</button>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-3" style="text-indent :5em;">
+          <label for="inputEmail4">Producto: </label>
+          <select [(ngModel)]="productoSelec" name="producto">
+            <select>Producto</select>
+            <option class="dropdown-item" selected disabled selected value="undefined">Seleccione</option>
+            <option [ngValue]="item" *ngFor="let item of productos">{{item.nombre}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3" style="text-indent :1em;">
+          <label for="inputEmail4">Fecha Desde: </label>
+          <input  [(ngModel)]="fechadesde" type="date" name="fechadesde" placeholder="Ingrese una Fecha">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputEmail4">Fecha Hasta: </label>
+          <input [(ngModel)]="fechahasta" type="date" name="fechahasta" placeholder="Ingrese una Fecha">
+        </div>
+        <div class="form-group col-md-2">
+          <button type="button" (click)="buscar()" class="btn btn-primary">Buscar</button>
+          <b style="margin:5px;"></b>
+          <button type="button" (click)="limpiar()" class="btn btn-secondary">Limpiar</button>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="detallesAux.length==0; else existenDatos" class="text-center">
+      <div *ngIf="clickBuscar == true; else noClickBuscar">
+        <h3>No existen resultados para la busqueda.</h3>
+      </div>
+      <ng-template #noClickBuscar>
+        <h3>Aun no existen ventas</h3>
+        <button class="btn btn-sm btn-dark mr-2" [routerLink]="['/registroVentas']">Ir a Registro Ventas</button>
+      </ng-template>
     </div>
     <ng-template #existenDatos>
       <table class="table table-bordered table-sm">
@@ -19,7 +50,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let detalle of detalles;let i= index">
+        <tr *ngFor="let detalle of detallesAux;let i= index">
           <td>{{detalle.ventaId}}</td>
           <td>{{detalle.fecha}}</td>
           <td>{{detalle.cliente.nombreApellido}}</td>

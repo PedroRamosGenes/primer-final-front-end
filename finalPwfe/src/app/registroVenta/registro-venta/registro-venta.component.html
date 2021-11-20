@@ -3,6 +3,9 @@
   <div class="card-header bg-light">Inicio de Registro Venta</div>
   <div class="card-body">
 
+    <div *ngIf="mensaje != ''">
+      <h6 style="color:red;text-indent :3em;">{{mensaje}}</h6>
+    </div>
     <form>
       <div class="form-row">
         <div class="form-group col-md-3">
@@ -20,7 +23,7 @@
           </select>
         </div>
       </div>
-      <button type="button" (click)="confirmar()" class="btn btn-primary" style="margin:5px;">Confirmar</button>
+      <b style="margin:35px;"></b> <button type="button" (click)="confirmar()" class="btn btn-primary" style="margin:5px;">Confirmar</button>
       <button type="button" (click)="cancelar()" class="btn btn-danger" style="margin:5px;">Cancelar</button>
     </form>
 
