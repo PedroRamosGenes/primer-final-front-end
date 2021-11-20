@@ -1,32 +1,47 @@
 <p>
-<div class="card">
-  <div class="card-header bg-light">Inicio de Registro Venta</div>
-  <div class="card-body">
+<p>
+  <div class="auth-inner">
+    <div class= "">
+      <div class="card ">
+          <div class="card-header bg-light ">Inicio de Registro Venta</div>
+        <div class="card-body">
+          <div *ngIf="mensaje != ''">
+            <h6 style="color:red;text-indent :3em;">{{mensaje}}</h6>
+          </div>
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-10">
+                <label>Numero Factura</label>
+                <input type="number" class="form-control" [(ngModel)]="venta.factura" name="factura"  placeholder="Ingrese un Numero Factura">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-8">
+                <label for="inputEmail4">Cliente</label>
+                <select  class="form-control" [(ngModel)]="venta.cliente" name="existencia">
+                  <select>Cliente</select>
+                  <option class="dropdown-item" disabled selected value="undefined">Seleccione</option>
+                  <option [ngValue]="item" *ngFor="let item of clientes">{{item.nombreApellido}}</option>
+                </select>
+              </div>
+            </div>
+            <b style="margin:35px;"></b> <button type="button" (click)="confirmar()" class="btn btn-primary" style="margin:5px;">Confirmar</button>
+            <button type="button" (click)="cancelar()" class="btn btn-danger" style="margin:5px;">Cancelar</button>
+          </form>
+      
+        </div>
+      
+      </div>
 
-    <div *ngIf="mensaje != ''">
-      <h6 style="color:red;text-indent :3em;">{{mensaje}}</h6>
     </div>
-    <form>
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label>Numero Factura</label>
-          <input type="number" class="form-control" [(ngModel)]="venta.factura" name="factura"  placeholder="Ingrese un Numero Factura">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="inputEmail4">Cliente</label>
-          <select  class="form-control" [(ngModel)]="venta.cliente" name="existencia">
-            <select>Cliente</select>
-            <option class="dropdown-item" disabled selected value="undefined">Seleccione</option>
-            <option [ngValue]="item" *ngFor="let item of clientes">{{item.nombreApellido}}</option>
-          </select>
-        </div>
-      </div>
-      <b style="margin:35px;"></b> <button type="button" (click)="confirmar()" class="btn btn-primary" style="margin:5px;">Confirmar</button>
-      <button type="button" (click)="cancelar()" class="btn btn-danger" style="margin:5px;">Cancelar</button>
-    </form>
-
+   
+      
+  
+      
+      
+    
+    
+    
+    
   </div>
-</div>
 
