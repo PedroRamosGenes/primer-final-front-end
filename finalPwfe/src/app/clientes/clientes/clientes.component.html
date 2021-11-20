@@ -1,0 +1,38 @@
+<p>
+<div class="card">
+  <div class="card-header bg-light text-dark">Lista de Clientes</div>
+  <div class="card-body">
+    <div *ngIf="clientes.length==0; else existenDatos" class="text-center">
+      <h3>Aun no existen clientes</h3>
+      <button class="btn btn-sm btn-dark mr-2" [routerLink]="['/agregarClientes']">Agregar Cliente</button>
+    </div>
+    <ng-template #existenDatos>
+    <table class="table table-bordered table-sm">
+      <thead class="thead-dark">
+      <tr>
+        <th>id</th>
+        <th>Ruc</th>
+        <th>Nombre Completo</th>
+        <th>email</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cliente of clientes;let i= index">
+        <td>{{cliente.clienteId}}</td>
+        <td>{{cliente.ruc}}</td>
+        <td>{{cliente.nombreApellido}}</td>
+        <td>{{cliente.email}}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-success mr-2" [routerLink]="['/editarClientes',cliente.clienteId]">Editar</button>
+          <button class="btn btn-sm btn-secondary" (click)="delete(cliente.clienteId)">Eliminar</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <button class="btn btn-sm btn-dark mr-2" [routerLink]="['/agregarClientes']">Agregar Cliente</button>
+    </div>
+    </ng-template>
+  </div>
+</div>

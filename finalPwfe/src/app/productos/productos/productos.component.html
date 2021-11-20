@@ -2,6 +2,11 @@
 <div class="card">
   <div class="card-header bg-light text-dark">Lista de Productos</div>
   <div class="card-body">
+    <div *ngIf="productos.length==0; else existenDatos" class="text-center">
+      <h3>Aun no existen productos</h3>
+      <button class="btn btn-sm btn-dark mr-2" [routerLink]="['/agregarProductos']">Agregar Producto</button>
+    </div>
+    <ng-template #existenDatos>
     <table class="table table-bordered table-sm">
       <thead class="thead-dark">
       <tr>
@@ -21,8 +26,8 @@
         <td>{{producto.precioVenta}}</td>
         <td>{{producto.existencia}}</td>
         <td class="text-center">
-          <button class="btn btn-sm btn-success mr-2" [routerLink]="['/editarProductos',producto.productoId]">Edit</button>
-          <button class="btn btn-sm btn-secondary" (click)="delete(producto.productoId)">Delete</button>
+          <button class="btn btn-sm btn-success mr-2" [routerLink]="['/editarProductos',producto.productoId]">Editar</button>
+          <button class="btn btn-sm btn-secondary" (click)="delete(producto.productoId)">Eliminar</button>
         </td>
       </tr>
       </tbody>
@@ -30,5 +35,6 @@
     <div class="text-center">
       <button class="btn btn-sm btn-dark mr-2" [routerLink]="['/agregarProductos']">Agregar Producto</button>
     </div>
+    </ng-template>
   </div>
 </div>

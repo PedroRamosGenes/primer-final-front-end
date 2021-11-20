@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 export class AgregarProductosComponent implements OnInit {
 
   producto: Producto = new Producto();
-  pruductoId: number = 0;
+  productoId: number = 0;
 
   constructor(private router: Router) { }
 
@@ -22,9 +22,9 @@ export class AgregarProductosComponent implements OnInit {
     debugger;
     const dato =  localStorage.getItem('productoId');
     if (dato !== null) {
-      this.pruductoId = JSON.parse(dato);
+      this.productoId = JSON.parse(dato);
       //Devuelvo +1 para el nuevo objeto
-      return this.pruductoId + 1;
+      return this.productoId + 1;
     } else {
       //Guardo 1 si es nuevo
 
@@ -34,8 +34,8 @@ export class AgregarProductosComponent implements OnInit {
   saveProducto() {
     debugger;
     //Llega id actualizado para guardar
-    this.pruductoId =  this.getNewProductId();
-    this.producto.productoId = this.pruductoId;
+    this.productoId =  this.getNewProductId();
+    this.producto.productoId = this.productoId;
 
     const datos =  localStorage.getItem('productos');
     if (datos !== null) {
@@ -43,7 +43,7 @@ export class AgregarProductosComponent implements OnInit {
       productos.push(this.producto);
       localStorage.setItem('productos', JSON.stringify(productos));
       //Actualizar idProd
-      localStorage.setItem('productoId', JSON.stringify(this.pruductoId));
+      localStorage.setItem('productoId', JSON.stringify(this.productoId));
     } else {
       const productoArr = [];
       productoArr.push(this.producto);

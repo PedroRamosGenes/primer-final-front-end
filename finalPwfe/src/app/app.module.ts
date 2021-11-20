@@ -7,13 +7,19 @@ import { ProductosComponent } from './productos/productos/productos.component';
 import { AgregarProductosComponent } from './productos/agregar-productos/agregar-productos.component';
 import { EditarProductosComponent } from './productos/editar-productos/editar-productos.component';
 import {FormsModule} from "@angular/forms";
+import { ClientesComponent } from './clientes/clientes/clientes.component';
+import { AgregarClientesComponent } from './clientes/agregar-clientes/agregar-clientes.component';
+import { EditarClientesComponent } from './clientes/editar-clientes/editar-clientes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductosComponent,
     AgregarProductosComponent,
-    EditarProductosComponent
+    EditarProductosComponent,
+    ClientesComponent,
+    AgregarClientesComponent,
+    EditarClientesComponent
   ],
   imports: [
     BrowserModule,
