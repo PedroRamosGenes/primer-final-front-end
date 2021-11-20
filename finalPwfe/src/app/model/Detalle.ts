@@ -8,7 +8,7 @@ export class Detalle {
   dia?: number;
   mes?: number;
   ano?: number;
-  cliente?: Cliente;
+  cliente!: Cliente;
   producto!: Producto;
   cantidad?: number;
   totalDetalle?: number;

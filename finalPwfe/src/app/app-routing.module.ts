@@ -8,6 +8,8 @@ import {EditarClientesComponent} from "./clientes/editar-clientes/editar-cliente
 import {ClientesComponent} from "./clientes/clientes/clientes.component";
 import {RegistroVentaComponent} from "./registroVenta/registro-venta/registro-venta.component";
 import {DetalleComponent} from "./registroVenta/detalle/detalle.component";
+import {ReporteResumidoComponent} from "./reportes/reporte-resumido/reporte-resumido.component";
+import {ReporteDetalladoComponent} from "./reportes/reporte-detallado/reporte-detallado.component";
 
 
 const routes: Routes = [{
@@ -41,6 +43,14 @@ const routes: Routes = [{
   {
     path:'editarClientes/:id',
     component:EditarClientesComponent
+  },
+  {
+    path:'reporteResumido',
+    component:ReporteResumidoComponent
+  },
+  {
+    path:'reporteDetallado',
+    component:ReporteDetalladoComponent
   },
 
 ];

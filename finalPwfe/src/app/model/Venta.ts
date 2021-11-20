@@ -7,6 +7,6 @@ export class Venta {
   dia?: number;
   mes?: number;
   ano?: number;
-  cliente?: Cliente;
+  cliente!: Cliente;
   total?: number;
 }

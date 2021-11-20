@@ -137,16 +137,40 @@ export class DetalleComponent implements OnInit {
 
   deleteDetalle(id:any){
 
+    //Restar total
+    const datos4 =  localStorage.getItem('detallesAux');
+    if (datos4 !== null) {
+      const detalles = JSON.parse(datos4);
+      const detalle = detalles.find((m: any) => m.detalleId == id);
+      // @ts-ignore
+      this.venta.total = this.venta.total - detalle.totalDetalle;
+    }
+
+    //Actualizar en array
+    const datos3 =  localStorage.getItem('ventas');
+    if (datos3 !== null) {
+      this.ventas = JSON.parse(datos3);
+      for(let i=0; i<this.ventas.length; i++){
+        if( this.ventas[i].ventaId == this.venta.ventaId){
+          this.ventas[i].total = this.venta.total;
+        }
+      }
+      localStorage.setItem('ventas', JSON.stringify(this.ventas));
+    }
+
+    //Retirar detalle de lista
     const datos =  localStorage.getItem('detallesAux');
     if (datos !== null) {
       const detallesAux = JSON.parse(datos);
       detallesAux.splice(detallesAux.findIndex((a:any)=>a.detalleId == id),1);
       localStorage.setItem('detallesAux', JSON.stringify(detallesAux));
     }
+    //Actualizar detalles
     const datosNew = localStorage.getItem('detallesAux');
     if (datosNew !==  null) {
       this.detalles = JSON.parse(datosNew);
     }
+
   }
 
   confirmar(){

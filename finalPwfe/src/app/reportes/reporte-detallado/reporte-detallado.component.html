@@ -1,0 +1,34 @@
+<p>
+<div class="card">
+  <div class="card-header bg-light text-dark">Lista de Productos</div>
+  <div class="card-body">
+    <div *ngIf="detalles.length==0; else existenDatos" class="text-center">
+      <h3>Aun no existen ventas</h3>
+      <button class="btn btn-sm btn-dark mr-2" [routerLink]="['/registroVentas']">Ir a Registro Ventas</button>
+    </div>
+    <ng-template #existenDatos>
+      <table class="table table-bordered table-sm">
+        <thead class="thead-dark">
+        <tr>
+          <th>idVenta</th>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Total Detalle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let detalle of detalles;let i= index">
+          <td>{{detalle.ventaId}}</td>
+          <td>{{detalle.fecha}}</td>
+          <td>{{detalle.cliente.nombreApellido}}</td>
+          <td>{{detalle.producto.nombre}}</td>
+          <td>{{detalle.cantidad}}</td>
+          <td>{{detalle.totalDetalle}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+</div>
