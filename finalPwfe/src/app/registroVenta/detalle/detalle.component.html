@@ -1,0 +1,88 @@
+<p>
+<div class="card">
+  <div class="card-header bg-light">Informacion Registro</div>
+  <div class="card-body">
+
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label>Fecha</label>
+          <input type="text" class="form-control" [(ngModel)]="venta.fecha" name="fecha"  placeholder="Ingrese una fecha" readonly>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Numero Factura</label>
+          <input type="text" class="form-control" [(ngModel)]="venta.factura" name="factura"  placeholder="Ingrese una factura" readonly>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Cliente</label>
+          <input type="text" class="form-control" [(ngModel)]="cliente.nombreApellido" name="cliente"  placeholder="Ingrese un Cliente" readonly>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Total</label>
+          <input type="number" class="form-control" [(ngModel)]="venta.total" name="total"  placeholder="0" readonly>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<p>
+<div class="card">
+  <div class="card-header bg-light">Detalles de Venta</div>
+  <div class="card-body">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputEmail4">Producto</label>
+          <select  class="form-control" [(ngModel)]="detalle.producto" name="producto">
+            <select>Producto</select>
+            <option class="dropdown-item" disabled selected value="undefined">Seleccione</option>
+            <option [ngValue]="item" *ngFor="let item of productos">{{item.nombre}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Cantidad</label>
+          <input type="number" class="form-control" [(ngModel)]="detalle.cantidad" name="cantidad"  placeholder="Ingrese una Cantidad">
+        </div>
+      </div>
+      <div class="form-row text-center" style="text-indent :18em;">
+        <div class="form-group col-md-3">
+          <button type="button" (click)="agregarDetalle()" class="btn btn-primary">Agregar Detalle</button>
+        </div>
+      </div>
+
+    </form>
+    <div *ngIf="detalles.length==0; else existenDatos" class="text-center">
+      <h4>Aun no existen detalles para esta venta</h4>
+    </div>
+    <ng-template #existenDatos>
+    <table class="table table-bordered table-sm">
+      <thead class="thead-dark">
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Total Detalle</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let detalle of detalles;let i= index">
+        <td>{{detalle.producto.nombre}}</td>
+        <td>{{detalle.cantidad}}</td>
+        <td>{{detalle.totalDetalle}}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-secondary" (click)="deleteDetalle(detalle.detalleId)">Eliminar Detalle</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </ng-template>
+  </div>
+</div>
+<p></p>
+<div class="text-center">
+  <div class="text-center">
+    <button type="button" (click)="confirmar()" class="btn btn-primary" style="margin:5px;">Confirmar Registro</button>
+    <button type="button" (click)="cancelar()" class="btn btn-danger" style="margin:5px;">Cancelar Registro</button>
+  </div>
+</div>

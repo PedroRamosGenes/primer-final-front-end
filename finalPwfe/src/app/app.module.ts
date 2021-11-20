@@ -10,6 +10,8 @@ import {FormsModule} from "@angular/forms";
 import { ClientesComponent } from './clientes/clientes/clientes.component';
 import { AgregarClientesComponent } from './clientes/agregar-clientes/agregar-clientes.component';
 import { EditarClientesComponent } from './clientes/editar-clientes/editar-clientes.component';
+import { RegistroVentaComponent } from './registroVenta/registro-venta/registro-venta.component';
+import { DetalleComponent } from './registroVenta/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { EditarClientesComponent } from './clientes/editar-clientes/editar-clien
     EditarProductosComponent,
     ClientesComponent,
     AgregarClientesComponent,
-    EditarClientesComponent
+    EditarClientesComponent,
+    RegistroVentaComponent,
+    DetalleComponent,
   ],
   imports: [
     BrowserModule,

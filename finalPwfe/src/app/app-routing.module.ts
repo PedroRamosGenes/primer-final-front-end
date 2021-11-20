@@ -6,6 +6,8 @@ import {EditarProductosComponent} from "./productos/editar-productos/editar-prod
 import {AgregarClientesComponent} from "./clientes/agregar-clientes/agregar-clientes.component";
 import {EditarClientesComponent} from "./clientes/editar-clientes/editar-clientes.component";
 import {ClientesComponent} from "./clientes/clientes/clientes.component";
+import {RegistroVentaComponent} from "./registroVenta/registro-venta/registro-venta.component";
+import {DetalleComponent} from "./registroVenta/detalle/detalle.component";
 
 
 const routes: Routes = [{
@@ -15,6 +17,14 @@ const routes: Routes = [{
   {
     path:'clientes',
     component:ClientesComponent
+  },
+  {
+    path:'registroVentas',
+    component:RegistroVentaComponent
+  },
+  {
+    path:'detalle',
+    component:DetalleComponent
   },
   {
     path:'agregarProductos',
