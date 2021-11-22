@@ -2,10 +2,10 @@
 
 *** INTEGRANTES ***
 
-    - Gisselle Barreto.
-    - Kathia Garcia.
-    - Pedro Ramos.
-    - Bruno Ruiz Diaz.
+    	* Gisselle Barreto.
+    	* Kathia Garcia.
+    	* Pedro Ramos.
+    	* Bruno Ruiz Diaz.
 
 
 *** PARA EL DESPLIEGUE DE LA APLICACION ***
@@ -13,26 +13,23 @@
 1) Descargar e instalar Node
 
 ```
-	Para windows/mac: https://nodejs.org/es/download/. Instalar con las opciones por defecto.
+	Para windows/mac: 
+		https://nodejs.org/es/download/. Instalar con las opciones por defecto.
 
 	Para linux (ubuntu), ejecutar los siguientes comandos en la consola:
-	
-	curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-	
-	sudo apt-get install -y nodejs
+		curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+		sudo apt-get install -y nodejs
 ```
 
 2) Comprobar la instalación del Node y de npm (manejador de paquetes del Node que se instala con el Node automáticamente)
 ```
 	Ejecutar el siguiente comando para comprobar el Node:
-	    node -v
-	    
+	    node -v    
 	Devolverá la versión correspondiente, por ejemplo:
 	    v14.16.1
 	
-    Ejecutar el siguiente comando para comprobar el npm:
+   	Ejecutar el siguiente comando para comprobar el npm:
 	    npm -v
-	    
 	Devolverá la versión correspondiente, por ejemplo:
 	    v14.16.1
 ```
