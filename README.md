@@ -1,7 +1,7 @@
 # primer-final-front-end
 Primer examen final front end.
 
-*** Integrantes ***
+*** INTEGRANTES ***
 
     - Gisselle Barreto.
     - Kathia Garcia.
@@ -13,11 +13,12 @@ Primer examen final front end.
 
 1) Descargar e instalar Node
 
-	Para windows/mac: https://nodejs.org/es/download/
-	Instalar con las opciones por defecto
+	Para windows/mac: https://nodejs.org/es/download/. Instalar con las opciones por defecto.
 
-	Para linux (ubuntu) ejecutar los siguientes comandos en la consola: 
+	Para linux (ubuntu), ejecutar los siguientes comandos en la consola:
+	
 	curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+	
 	sudo apt-get install -y nodejs
 
 
@@ -25,11 +26,13 @@ Primer examen final front end.
 
 	Ejecutar el siguiente comando para comprobar el Node:
 	    node -v
+	    
 	Devolverá la versión correspondiente, por ejemplo:
 	    v14.16.1
 	
     Ejecutar el siguiente comando para comprobar el npm:
 	    npm -v
+	    
 	Devolverá la versión correspondiente, por ejemplo:
 	    v14.16.1
 
