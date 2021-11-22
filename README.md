@@ -53,8 +53,10 @@ Primer examen final front end.
 
     Acceder al directorio correspondiente a la app:
         ../primer-final-front-end/finalPwfe
+	
     Ejecutar el siguiente comando:
         ng serve
+	
     Acceder con el navegador a la url necesaria:
         http://localhost:4200/
 
