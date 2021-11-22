@@ -57,7 +57,7 @@ export class RegistroVentaComponent implements OnInit {
 
   confirmar(){
     if(this.venta.factura == undefined){
-      this.mensaje = "--Introduzca un Numero de Factura--";
+      this.mensaje = "--Introduzca Factura--";
     }else {
       if (this.venta.cliente == undefined) {
         this.mensaje = "--Seleccione un Cliente--";

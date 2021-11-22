@@ -39,7 +39,7 @@ export class AgregarClientesComponent implements OnInit {
       this.mensaje = "--Introduzca un Ruc--";
     }else {
       if (this.cliente.nombreApellido == undefined) {
-        this.mensaje = "--Introduzca Nombre Completo--";
+        this.mensaje = "--Introduzca Nombre--";
       } else {
         if (this.cliente.email == undefined) {
           this.mensaje = "--Introduzca un Email--";

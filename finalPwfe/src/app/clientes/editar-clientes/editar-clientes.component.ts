@@ -38,7 +38,7 @@ export class EditarClientesComponent implements OnInit {
       this.mensaje = "--Introduzca un Ruc--";
     }else {
       if (this.cliente.nombreApellido == "") {
-        this.mensaje = "--Introduzca Nombre Completo--";
+        this.mensaje = "--Introduzca Nombre--";
       } else {
         if (this.cliente.email == "") {
           this.mensaje = "--Introduzca un Email--";

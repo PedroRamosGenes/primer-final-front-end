@@ -4,7 +4,12 @@
     <div class="card-header bg-light text-center">Editar Producto</div>
     <div class="card-body">
       <div *ngIf="mensaje != ''">
-        <h6 style="color:red;text-indent :5em;">{{mensaje}}</h6>
+        <div class="alert alert-danger alert-dismissible fade show align-items-center text-center" role="alert">
+          <strong>{{mensaje}}</strong>
+          <strong><a href = "/editarProductos/{{producto.productoId}}" class = "close" data-dismiss = "alert">
+            &times;
+          </a></strong>
+        </div>
       </div>
       <form>
         <div class="form-row">
@@ -35,11 +40,11 @@
             </select>
           </div>
         </div>
-        <b style="margin:45px;"></b><button type="button" (click)="updateProducto()" class="btn btn-primary">Guardar</button>
+        <b style="margin:30px;"></b><button type="button" (click)="updateProducto()" class="btn btn-primary">Guardar</button>
         <b style="margin:5px;"></b><button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
       </form>
     </div>
   </div>
-  
+
 
 </div>
